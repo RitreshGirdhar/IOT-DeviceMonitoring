@@ -45,3 +45,6 @@ Lets check weather events queue in Rabbit MQ
 
 ![Message recieved](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Message-Received.png)
 
+
+WIP: Need to share logstash configuration to read data from rabbitMQ queue and pass it to weather index in ELK.
+
