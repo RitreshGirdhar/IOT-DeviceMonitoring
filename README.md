@@ -48,8 +48,9 @@ Lets check weather events queue in Rabbit MQ
 
 WIP: Need to share logstash configuration to read data from rabbitMQ queue and pass it to weather index in ELK.
 
-Start logstash with below configuration. Its basic configuration , which will read from RabbitMq and dump events into weather index in Elastic Search.
+Start logstash with below configuration name logstash-rabbitmq.conf. Its basic configuration , which will read from RabbitMq and dump events into weather index in Elastic Search.
 
+paster below conf in logstash-rabbitmq.conf
 ```
 input {
     rabbitmq {
@@ -59,6 +60,7 @@ input {
         durable => true
         exchange => "amq.topic"
         exchange_type => "topic"
+        key => "weather.*"
     }
 }
 output {
@@ -69,5 +71,24 @@ output {
     stdout {}
 }
 ```
+
+Start logstash 
+```
+logstash -f <path>/logstash-rabbitmq.conf
+```
+
+After logstash startup , you will see logstash queue get created and bind with weather* events in RabbitMQ 
+
+![Logstash configured](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Logstash-bind.png)
+
+Let publish some test message 
+
+![Publish test message](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/publish-message.png)
+
+Let's check kibana 
+
+![Kibana received Message](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Kibana-read-weather-index.png)
+
+
 
 
