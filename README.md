@@ -1,24 +1,25 @@
 # IOT Device Monitoring Sample Application
 Sample application to capture Events from IOT devices and monitors it through ELK or store it in events-store or some time-series database for further processing.
 
-Here i am taking very basic example of weather temperature capturing city wise. You could use it for any another event capturing.
+Here i am taking a very basic example of capturing weather temperature city-wise. You could use it for any another event capturing.
 
-Idea of this application is to give you enough idea to set up your own message broker and device-monitoring. 
+Purpose of this application is to give you enough idea to set up your own message broker & device-monitoring.
 
-Below are the most Popular Internet of Things Protocols and tandards Communication Technologies. 
+Below are the most Popular Internet of Things Protocols and standard communication technologies :
 * MQTT
 * DDS
 * AMQP
 * Bluetooth
 * Zigbee
 
-In this tutorial i am using MQTT protocol. To capture events from devices we need mqtt broker to capture the events and store it then it would be used for further processing. 
+In this tutorial i am using MQTT protocol. To capture events from IOT devices we require mqtt broker to consume the generated events and store it for further processing. 
 
-I am using RabbitMQ as MQTT broker and to simulate behavior of IOT devices event generation i will use mosquitto publisher. Refer [this](https://youtu.be/deG25y_r6OY) to understand basic understanding of RabbitMQ
+I am using RabbitMQ as MQTT broker and to simulate behavior of IOT devices event generation i will use mosquitto's publisher.  
+Refer [this](https://youtu.be/deG25y_r6OY) to understand basic understanding of RabbitMQ.
 
-Pre-requisite
+Pre-requisites :
 1. Basic understanding of RabbitMQ and ELK.
-2. Install RabbitMQ Server and ELK stack.
+2. Install RabbitMQ Server.
 3. Install mosquitto package.
 4. Set up ELK on your machine.
 
@@ -41,13 +42,13 @@ rabbitmq-plugins enable rabbitmq_mqtt
 ![Message recieved](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Rabbitmq-4.png)
 
 
-Hope you have install mosquitto package Let's try to send some message through mosquitto_pub.
+Hope you have installed mosquitto package. Now let's try to send some message through mosquitto_pub.
 
 ```
 mosquitto_pub  -h 127.0.0.1 -t weather.mumbai -m "{"temperature":{"min":21,"max":29,"unit":"celsius"},"time":1568881230}" -u guest -P guest -p 1883 -d
 ```
 
-Lets check weather events queue in Rabbit MQ 
+Let's check weather events queue in Rabbit MQ.
 
 ![Message recieved](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Message-Received.png)
 
