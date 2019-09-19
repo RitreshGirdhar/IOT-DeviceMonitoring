@@ -89,6 +89,14 @@ Let's check kibana
 
 ![Kibana received Message](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Kibana-read-weather-index.png)
 
+Here you will see on Kibana that Message published into Elastic search.  Now let's test it through MQTT client/IOT Device (in our case its mosquitto_pub)
+
+
+```
+$ mosquitto_pub  -h 127.0.0.1 -t weather.mumbai -m '{"temperature":{"min":21,"max":32,"unit":"celsius"},"timestamp":"2019-09-19T18:59:00"}' -u guest -P guest -p 1883 -d
+```
+
+![Kibana received Message 1](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/mosquito-msg-consumer.png)
 
 
 
