@@ -17,11 +17,17 @@ In this tutorial i am using MQTT protocol. To capture events from devices we nee
 I am using RabbitMQ as MQTT broker and to simulate behavior of IOT devices event generation i will use mosquitto publisher. Refer [this](https://youtu.be/deG25y_r6OY) to understand basic understanding of RabbitMQ
 
 Pre-requisite
-1. Set up RabbitMQ Server.
-2. Install mosquitto package.
-3. Set up ELK on your machine.
+1. Basic understanding of RabbitMQ and ELK.
+2. Install RabbitMQ Server and ELK stack.
+3. Install mosquitto package.
+4. Set up ELK on your machine.
 
-Rabbit MQ :
+Rabbit MQ Configuration. 
+** Make sure to enable mqtt plugin in rabbitmq using below command:
+```
+rabbitmq-plugins enable rabbitmq_mqtt
+```
+
 1. Creating Queue:
 ![Creating Queue](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Rabbitmq-1.png)
 
