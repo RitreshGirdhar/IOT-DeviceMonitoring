@@ -48,3 +48,26 @@ Lets check weather events queue in Rabbit MQ
 
 WIP: Need to share logstash configuration to read data from rabbitMQ queue and pass it to weather index in ELK.
 
+Start logstash with below configuration. Its basic configuration , which will read from RabbitMq and dump events into weather index in Elastic Search.
+
+```
+input {
+    rabbitmq {
+        host => "localhost"
+        port => 15672
+        heartbeat => 30
+        durable => true
+        exchange => "amq.topic"
+        exchange_type => "topic"
+    }
+}
+output {
+    elasticsearch {
+        hosts => "localhost:9200"
+        index => "weather"
+    }
+    stdout {}
+}
+```
+
+
