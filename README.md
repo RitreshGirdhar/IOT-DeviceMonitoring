@@ -52,12 +52,9 @@ Let's check weather events queue in Rabbit MQ.
 
 ![Message recieved](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Message-Received.png)
 
+Start logstash with configuration i.e logstash-rabbitmq.conf. It is a basic configuration,which will read from RabbitMQ and dump events into weather index in Elastic Search.
 
-WIP: Need to share logstash configuration to read data from rabbitMQ queue and pass it to weather index in ELK.
-
-Start logstash with below configuration name logstash-rabbitmq.conf. Its basic configuration , which will read from RabbitMq and dump events into weather index in Elastic Search.
-
-paster below conf in logstash-rabbitmq.conf
+paste below conf in logstash-rabbitmq.conf file
 ```
 input {
     rabbitmq {
@@ -84,20 +81,19 @@ Start logstash
 logstash -f <path>/logstash-rabbitmq.conf
 ```
 
-After logstash startup , you will see logstash queue get created and bind with weather* events in RabbitMQ 
+After logstash startup , you will see logstash queue get created and binded with weather* events in RabbitMQ 
 
 ![Logstash configured](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Logstash-bind.png)
 
-Let publish some test message 
+Let's publish some test messages through RabbitMQ GUI
 
 ![Publish test message](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/publish-message.png)
 
-Let's check kibana 
+Now let's check kibana dashboard of weather-index. As you could see in below Kibana search that our weather-mumbai event received by Elastic-Search through logstash.
 
 ![Kibana received Message](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Kibana-read-weather-index.png)
 
-Here you will see on Kibana that Message published into Elastic search.  Now let's test it through MQTT client/IOT Device (in our case its mosquitto_pub)
-
+Now let's test it through MQTT client/IOT Device (in our case its mosquitto_pub)
 
 ```
 $ mosquitto_pub  -h 127.0.0.1 -t weather.mumbai -m '{"temperature":{"min":21,"max":32,"unit":"celsius"},"timestamp":"2019-09-19T18:59:00"}' -u guest -P guest -p 1883 -d
