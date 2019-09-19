@@ -1,5 +1,7 @@
 # IOT-DeviceMonitoring
-Sample application to capture Events from IOT devices and monitors it through ELK. 
+Sample application to capture Events from IOT devices and monitors it through ELK or store it in events-store or some time-series database for further processing.
+
+Here i am taking very basic example of weather temperature capturing city wise. You could use it for any another event capturing.
 
 Idea of this application is to give you enough idea to set up your own message broker and device-monitoring. 
 
