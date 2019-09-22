@@ -14,7 +14,7 @@ Below are the most Popular Internet of Things Protocols and standard communicati
 
 In this tutorial i am using MQTT protocol. To capture events from IOT devices we require mqtt broker to consume the generated events and store it for further processing. 
 
-I am using RabbitMQ as MQTT broker and to simulate behavior of IOT devices event generation i will use mosquitto's publisher.  
+I am using RabbitMQ as MQTT broker ([read it](https://dzone.com/articles/top-10-criteria-for-selecting-a-mqtt-broker-1))and to simulate behavior of IOT devices event generation i will use mosquitto's publisher.  
 Refer [this](https://youtu.be/deG25y_r6OY) to understand basic understanding of RabbitMQ.
 
 Pre-requisites :
