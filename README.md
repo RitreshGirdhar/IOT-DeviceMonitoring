@@ -34,16 +34,16 @@ rabbitmq-plugins enable rabbitmq_mqtt
 ```
 
 1. Creating Queue:
-![Creating Queue](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Rabbitmq-1.png)
+![Creating Queue](images/Rabbitmq-1.png)
 
 2. Binding exchange with Queue by routing Key :
-![Binding Exchange with queue](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Rabbitmq-2.png)
+![Binding Exchange with queue](images/Rabbitmq-2.png)
 
 3. Publising message 
-![Publishing message with routing key](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Rabbitmq-3.png)
+![Publishing message with routing key](images/Rabbitmq-3.png)
 
 4. Message received
-![Message recieved](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Rabbitmq-4.png)
+![Message recieved](images/Rabbitmq-4.png)
 
 
 Hope you have installed mosquitto package. Now let's try to send some message through mosquitto_pub.
@@ -54,7 +54,7 @@ mosquitto_pub  -h 127.0.0.1 -t weather.mumbai -m "{"temperature":{"min":21,"max"
 
 Let's check weather events queue in Rabbit MQ.
 
-![Message recieved](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Message-Received.png)
+![Message recieved](images/Message-Received.png)
 
 Start logstash with configuration i.e logstash-rabbitmq.conf. It is a basic configuration,which will read from RabbitMQ and dump events into weather index in Elastic Search.
 
@@ -87,15 +87,15 @@ logstash -f <path>/logstash-rabbitmq.conf
 
 After logstash startup , you will see logstash queue get created and binded with weather* events in RabbitMQ 
 
-![Logstash configured](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Logstash-bind.png)
+![Logstash configured](images/Logstash-bind.png)
 
 Let's publish some test messages through RabbitMQ GUI
 
-![Publish test message](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/publish-message.png)
+![Publish test message](images/publish-message.png)
 
 Now let's check kibana dashboard of weather-index. As you could see in below Kibana search that our weather-mumbai event received by Elastic-Search through logstash.
 
-![Kibana received Message](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/Kibana-read-weather-index.png)
+![Kibana received Message](images/Kibana-read-weather-index.png)
 
 Now let's test it through MQTT client/IOT Device (in our case its mosquitto_pub)
 
@@ -103,7 +103,7 @@ Now let's test it through MQTT client/IOT Device (in our case its mosquitto_pub)
 $ mosquitto_pub  -h 127.0.0.1 -t weather.mumbai -m '{"temperature":{"min":21,"max":32,"unit":"celsius"},"timestamp":"2019-09-19T18:59:00"}' -u guest -P guest -p 1883 -d
 ```
 
-![Kibana received Message 1](https://github.com/RitreshGirdhar/IOT-DeviceMonitoring/blob/master/images/mosquito-msg-consumer.png)
+![Kibana received Message 1](images/mosquito-msg-consumer.png)
 
 
 
